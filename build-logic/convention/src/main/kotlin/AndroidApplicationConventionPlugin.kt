@@ -25,7 +25,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = TARGET_SDK_VERSION
-                @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
 //                configureGradleManagedDevices(this)
             }

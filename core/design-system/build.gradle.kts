@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.framework.android.library)
-    alias(libs.plugins.framework.android.library.compose)
-    alias(libs.plugins.framework.android.library.jacoco)
+    alias(libs.plugins.alltrails.android.library)
+    alias(libs.plugins.alltrails.android.library.compose)
+    alias(libs.plugins.alltrails.android.library.jacoco)
     alias(libs.plugins.roborazzi)
 }
 

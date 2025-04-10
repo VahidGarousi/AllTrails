@@ -1,7 +1,7 @@
 import com.android.build.gradle.LibraryExtension
 import com.google.devtools.ksp.gradle.KspExtension
-import ir.vahid.framework.configureGeneratedKoinLibrary
-import ir.vahid.framework.configureKoinAndroid
+import ir.vahid.alltrails.configureGeneratedKoinLibrary
+import ir.vahid.alltrails.configureKoinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

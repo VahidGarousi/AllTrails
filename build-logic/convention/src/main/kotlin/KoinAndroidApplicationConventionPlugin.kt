@@ -1,8 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.gradle.AbstractAppExtension
 import com.google.devtools.ksp.gradle.KspExtension
-import ir.vahid.framework.configureGeneratedKoinApplication
-import ir.vahid.framework.configureKoinAndroid
+import ir.vahid.alltrails.configureGeneratedKoinApplication
+import ir.vahid.alltrails.configureKoinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

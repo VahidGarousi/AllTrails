@@ -1,5 +1,5 @@
 import com.android.build.gradle.TestExtension
-import ir.vahid.framework.configureKotlinAndroid
+import ir.vahid.alltrails.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

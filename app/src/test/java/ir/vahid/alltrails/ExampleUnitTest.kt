@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 import io.kotest.core.spec.style.AnnotationSpec
 import org.junit.jupiter.api.Assertions.assertEquals

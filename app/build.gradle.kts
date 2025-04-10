@@ -1,15 +1,15 @@
-import ir.vahid.framework.FrameworkBuildType
+import ir.vahid.alltrails.AllTrailsBuildType
 
 plugins {
-    alias(libs.plugins.framework.android.application)
-    alias(libs.plugins.framework.android.application.compose)
-    alias(libs.plugins.framework.android.application.flavors)
-    alias(libs.plugins.framework.android.application.jacoco)
-    alias(libs.plugins.framework.kotest)
+    alias(libs.plugins.alltrails.android.application)
+    alias(libs.plugins.alltrails.android.application.compose)
+    alias(libs.plugins.alltrails.android.application.flavors)
+    alias(libs.plugins.alltrails.android.application.jacoco)
+    alias(libs.plugins.alltrails.kotest)
 }
 
 android {
-    namespace = "ir.vahid.framework"
+    namespace = "ir.vahid.alltrails"
     compileSdk = 35
 
     defaultConfig {
@@ -25,7 +25,7 @@ android {
         debug {
             isMinifyEnabled = false
             isShrinkResources = false
-            versionNameSuffix = FrameworkBuildType.DEBUG.versionNameSuffix
+            versionNameSuffix = AllTrailsBuildType.DEBUG.versionNameSuffix
         }
         release {
             isMinifyEnabled = true

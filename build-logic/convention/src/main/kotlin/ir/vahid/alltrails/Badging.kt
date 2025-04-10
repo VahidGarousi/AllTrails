@@ -1,6 +1,6 @@
 @file:Suppress("ForbiddenComment")
 
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 
 import com.android.SdkConstants
@@ -107,7 +107,7 @@ fun Project.configureBadgingTasks(
         val capitalizedVariantName = variant.name.capitalized()
         val generateBadgingTaskName = "generate${capitalizedVariantName}Badging"
         val generateBadging =
-            tasks.register<GenerateBadgingTask>(generateBadgingTaskName) {
+            tasks.register<ir.vahid.alltrails.GenerateBadgingTask>(generateBadgingTaskName) {
                 apk = variant.artifacts.get(SingleArtifact.APK_FROM_BUNDLE)
                 aapt2Executable.set(
                     // TODO: Replace with `sdkComponents.aapt2` when it's available in AGP
@@ -128,15 +128,15 @@ fun Project.configureBadgingTasks(
 
         val updateBadgingTaskName = "update${capitalizedVariantName}Badging"
         tasks.register<Copy>(updateBadgingTaskName) {
-            from(generateBadging.map(GenerateBadgingTask::badging))
+            from(generateBadging.map(ir.vahid.alltrails.GenerateBadgingTask::badging))
             into(project.layout.projectDirectory)
         }
 
         val checkBadgingTaskName = "check${capitalizedVariantName}Badging"
-        tasks.register<CheckBadgingTask>(checkBadgingTaskName) {
+        tasks.register<ir.vahid.alltrails.CheckBadgingTask>(checkBadgingTaskName) {
             goldenBadging = project.layout.projectDirectory.file("${variant.name}-badging.txt")
 
-            generatedBadging.set(generateBadging.flatMap(GenerateBadgingTask::badging))
+            generatedBadging.set(generateBadging.flatMap(ir.vahid.alltrails.GenerateBadgingTask::badging))
 
             this.updateBadgingTaskName = updateBadgingTaskName
 

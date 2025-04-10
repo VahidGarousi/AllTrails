@@ -26,10 +26,10 @@ import com.github.takahirom.roborazzi.RoborazziOptions.CompareOptions
 import com.github.takahirom.roborazzi.RoborazziOptions.RecordOptions
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.github.takahirom.roborazzi.checkRoboAccessibility
-import com.google.android.apps.common.testing.accessibility.alltrails.AccessibilityCheckPreset
-import com.google.android.apps.common.testing.accessibility.alltrails.AccessibilityViewCheckResult
-import com.google.android.apps.common.testing.accessibility.alltrails.integrations.espresso.AccessibilityViewCheckException
-import com.google.android.apps.common.testing.accessibility.alltrails.utils.contrast.BitmapImage
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPreset
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult
+import com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException
+import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.BitmapImage
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers

@@ -182,7 +182,7 @@ private fun BoxScope.BookmarkIcon() {
 private fun TrailImage(modifier: Modifier = Modifier) {
     Image(
         modifier = modifier.fillMaxWidth(),
-        painter = painterResource(R.drawable.trail),
+        painter = painterResource(R.drawable.core_design_system_trail),
         contentDescription = null,
         contentScale = ContentScale.Crop,
     )

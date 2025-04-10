@@ -3,6 +3,7 @@ package ir.vahid.alltrails
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import ir.vahid.core.designsystem.ATBottomBar
 import ir.vahid.core.designsystem.ATSearchInput
 import ir.vahid.core.designsystem.FilterButtonRow
+import ir.vahid.core.designsystem.TrailListItem
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
 
 @Composable
@@ -25,7 +27,6 @@ fun ATContent(modifier: Modifier = Modifier) {
         modifier = modifier,
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .padding(
                     top = 16.dp,
@@ -38,15 +39,35 @@ fun ATContent(modifier: Modifier = Modifier) {
                     ).fillMaxWidth(),
             )
             FilterButtonRow(
-                modifier = Modifier.fillMaxWidth(),
-            )
-            LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(vertical = 16.dp),
+            )
+            TrailList(
+                modifier = Modifier
                     .weight(1f),
-            ) {
-            }
+            )
             ATBottomBar()
+        }
+    }
+}
+
+@Composable
+private fun TrailList(modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(
+            start = 16.dp,
+            end = 16.dp,
+            top = 0.dp,
+            bottom = 16.dp,
+        ),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        items(
+            count = 3,
+        ) {
+            TrailListItem()
         }
     }
 }

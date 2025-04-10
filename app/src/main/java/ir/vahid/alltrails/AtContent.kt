@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import ir.vahid.core.designsystem.ATBottomBar
 import ir.vahid.core.designsystem.ATSearchInput
 import ir.vahid.core.designsystem.FilterButtonRow
+import ir.vahid.core.designsystem.TrailGroupListItem
 import ir.vahid.core.designsystem.TrailListItem
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
 
@@ -65,9 +66,13 @@ private fun TrailList(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(
-            count = 3,
-        ) {
-            TrailListItem()
+            count = 4,
+        ) { index ->
+            if (index == 2) {
+                TrailListItem()
+            } else {
+                TrailGroupListItem()
+            }
         }
     }
 }

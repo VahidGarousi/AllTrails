@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 open class ModuleInfoExtension {
     var groupId: String = ""

@@ -1,9 +1,9 @@
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 /**
  * This is shared between :app and :benchmarks module to provide configurations type safety.
  */
-enum class FrameworkBuildType(val versionNameSuffix: String? = null) {
+enum class AllTrailsBuildType(val versionNameSuffix: String? = null) {
     DEBUG(".debug"),
     RELEASE,
 }

@@ -1,9 +1,9 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import ir.vahid.framework.configureFlavors
-import ir.vahid.framework.configureKotlinAndroid
-import ir.vahid.framework.disableUnnecessaryAndroidTests
-import ir.vahid.framework.libs
+import ir.vahid.alltrails.configureFlavors
+import ir.vahid.alltrails.configureKotlinAndroid
+import ir.vahid.alltrails.disableUnnecessaryAndroidTests
+import ir.vahid.alltrails.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -15,9 +15,9 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
-                apply("framework.android.ktlint")
-                apply("framework.android.detekt")
-                apply("framework.koin.android.library")
+                apply("alltrails.android.ktlint")
+                apply("alltrails.android.detekt")
+                apply("alltrails.koin.android.library")
                 apply("com.squareup.sort-dependencies")
             }
 

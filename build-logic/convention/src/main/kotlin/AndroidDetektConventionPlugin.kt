@@ -1,8 +1,8 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import ir.vahid.framework.libs
-import ir.vahid.framework.detektGradle
-import ir.vahid.framework.configureDetekt
+import ir.vahid.alltrails.libs
+import ir.vahid.alltrails.detektGradle
+import ir.vahid.alltrails.configureDetekt
 
 class AndroidDetektConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {

@@ -195,22 +195,22 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 
 # Plugins defined by this project
-framework-android-application = { id = "framework.android.application" }
-framework-android-application-flavors = { id = "framework.android.application.flavors" }
-framework-android-application-compose = { id = "framework.android.application.compose" }
-framework-android-application-jacoco = { id = "framework.android.application.jacoco" }
-framework-android-test = { id = "framework.android.test" }
-framework-jvm-library = { id = "framework.jvm.library" }
-framework-android-library = { id = "framework.android.library" }
-framework-android-library-compose = { id = "framework.android.library.compose" }
-framework-android-library-jacoco = { id = "framework.android.library.jacoco" }
-framework-jvm-publisher = { id = "framework.jvm.publisher" }
-framework-android-publisher = { id = "framework.android.publisher" }
-framework-android-ktlint = { id = "framework.android.ktlint" }
-framework-android-detekt = { id = "framework.android.detekt" }
-framework-kotest = { id = "framework.android.detekt" }
-framework-koin-android-application = { id = "framework.koin.android.application" }
-framework-koin-android-library = { id = "framework.koin.android.library" }
+alltrails-android-application = { id = "alltrails.android.application" }
+alltrails-android-application-flavors = { id = "alltrails.android.application.flavors" }
+alltrails-android-application-compose = { id = "alltrails.android.application.compose" }
+alltrails-android-application-jacoco = { id = "alltrails.android.application.jacoco" }
+alltrails-android-test = { id = "alltrails.android.test" }
+alltrails-jvm-library = { id = "alltrails.jvm.library" }
+alltrails-android-library = { id = "alltrails.android.library" }
+alltrails-android-library-compose = { id = "alltrails.android.library.compose" }
+alltrails-android-library-jacoco = { id = "alltrails.android.library.jacoco" }
+alltrails-jvm-publisher = { id = "alltrails.jvm.publisher" }
+alltrails-android-publisher = { id = "alltrails.android.publisher" }
+alltrails-android-ktlint = { id = "alltrails.android.ktlint" }
+alltrails-android-detekt = { id = "alltrails.android.detekt" }
+alltrails-kotest = { id = "alltrails.android.detekt" }
+alltrails-koin-android-application = { id = "alltrails.koin.android.application" }
+alltrails-koin-android-library = { id = "alltrails.koin.android.library" }
 
 
 [bundles]

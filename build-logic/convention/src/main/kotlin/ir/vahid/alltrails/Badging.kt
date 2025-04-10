@@ -1,6 +1,6 @@
 @file:Suppress("ForbiddenComment")
 
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 
 import com.android.SdkConstants

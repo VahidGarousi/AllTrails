@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.vahid.alltrails
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project

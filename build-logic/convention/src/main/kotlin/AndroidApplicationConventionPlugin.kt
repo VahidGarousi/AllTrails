@@ -1,8 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
-import ir.vahid.framework.configureBadgingTasks
-import ir.vahid.framework.configureKotlinAndroid
+import ir.vahid.alltrails.configureBadgingTasks
+import ir.vahid.alltrails.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -15,17 +15,16 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
-                apply("framework.android.ktlint")
+                apply("alltrails.android.ktlint")
                 apply("com.dropbox.dependency-guard")
-                apply("framework.android.detekt")
-                apply("framework.koin.android.application")
+                apply("alltrails.android.detekt")
+                apply("alltrails.koin.android.application")
                 apply("com.squareup.sort-dependencies")
             }
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = TARGET_SDK_VERSION
-                @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
 //                configureGradleManagedDevices(this)
             }

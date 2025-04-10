@@ -1,5 +1,5 @@
 import com.android.build.gradle.LibraryExtension
-import ir.vahid.framework.configureAndroidCompose
+import ir.vahid.alltrails.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply

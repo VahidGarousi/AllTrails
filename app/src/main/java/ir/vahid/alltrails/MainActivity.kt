@@ -19,10 +19,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AllTrailsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                ) { innerPadding ->
+                    ATContent(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
                     )
                 }
             }

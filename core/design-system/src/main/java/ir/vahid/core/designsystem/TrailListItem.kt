@@ -141,7 +141,9 @@ private fun TrailTitle() {
 @Composable
 private fun ImageContainer() {
     Box(
-        modifier = Modifier.clip(RoundedCornerShape(32.dp)),
+        modifier = Modifier
+            .clip(RoundedCornerShape(32.dp))
+            .aspectRatio(1.5f),
     ) {
         TrailImage(modifier = Modifier)
         BookmarkIcon()
@@ -179,9 +181,7 @@ private fun BoxScope.BookmarkIcon() {
 @Composable
 private fun TrailImage(modifier: Modifier = Modifier) {
     Image(
-        modifier = modifier
-            .fillMaxWidth()
-            .aspectRatio(1f),
+        modifier = modifier.fillMaxWidth(),
         painter = painterResource(R.drawable.trail),
         contentDescription = null,
         contentScale = ContentScale.Crop,

@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.InlineTextContent
@@ -27,6 +30,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +42,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ir.vahid.core.design_system.R
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
 
 @Composable
@@ -140,12 +143,17 @@ private fun TrailTitle() {
 
 @Composable
 private fun ImageContainer() {
+    val images = remember { TrailImagesGenerator.generate() }
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(32.dp))
             .aspectRatio(1.5f),
     ) {
-        TrailImage(modifier = Modifier)
+        val pagerState: PagerState = rememberPagerState { images.size }
+        TrailImages(
+            imagesResList = images,
+            pagerState = pagerState,
+        )
         BookmarkIcon()
         ATPagerIndicator(
             modifier = Modifier
@@ -179,13 +187,22 @@ private fun BoxScope.BookmarkIcon() {
  * Show static image but we should convert it to pager
  */
 @Composable
-private fun TrailImage(modifier: Modifier = Modifier) {
-    Image(
-        modifier = modifier.fillMaxWidth(),
-        painter = painterResource(R.drawable.core_design_system_trail),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-    )
+private fun TrailImages(
+    imagesResList: List<Int>,
+    pagerState: PagerState,
+    modifier: Modifier = Modifier,
+) {
+    HorizontalPager(
+        modifier = modifier,
+        state = pagerState,
+    ) { pageIndex ->
+        Image(
+            modifier = modifier.fillMaxWidth(),
+            painter = painterResource(imagesResList[pageIndex]),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+        )
+    }
 }
 
 @Preview(

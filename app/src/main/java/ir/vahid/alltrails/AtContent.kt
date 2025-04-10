@@ -1,16 +1,30 @@
 package ir.vahid.alltrails
 
 import android.content.res.Configuration
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Map
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,23 +69,57 @@ fun ATContent(modifier: Modifier = Modifier) {
 
 @Composable
 private fun TrailList(modifier: Modifier = Modifier) {
-    LazyColumn(
+    Box(
         modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(
-            start = 16.dp,
-            end = 16.dp,
-            top = 0.dp,
-            bottom = 16.dp,
-        ),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        items(
-            count = 4,
-        ) { index ->
-            if (index == 2) {
-                TrailListItem()
-            } else {
-                TrailGroupListItem()
+        val lazyListState = rememberLazyListState()
+        val firstVisibleItemIndex by remember {
+            derivedStateOf {
+                lazyListState.firstVisibleItemScrollOffset
+            }
+        }
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            state = lazyListState,
+            contentPadding = PaddingValues(
+                start = 16.dp,
+                end = 16.dp,
+                top = 0.dp,
+                bottom = 16.dp,
+            ),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            items(
+                count = 4,
+            ) { index ->
+                if (index == 2) {
+                    TrailListItem()
+                } else {
+                    TrailGroupListItem()
+                }
+            }
+        }
+        ExtendedFloatingActionButton(
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.BottomCenter),
+            shape = RoundedCornerShape(50),
+            onClick = {},
+        ) {
+            IconButton(
+                onClick = {},
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Map,
+                    contentDescription = null,
+                )
+            }
+            AnimatedVisibility(
+                visible = firstVisibleItemIndex == 0,
+            ) {
+                Text(
+                    text = "Map",
+                )
             }
         }
     }

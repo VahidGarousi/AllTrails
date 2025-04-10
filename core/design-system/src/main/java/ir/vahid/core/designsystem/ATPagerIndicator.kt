@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList")
+
 package ir.vahid.core.designsystem
 
 import androidx.compose.foundation.background

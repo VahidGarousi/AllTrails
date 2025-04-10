@@ -14,6 +14,8 @@ naming:
 style:
   UnusedPrivateMember:
     ignoreAnnotated: [ 'Preview' ]
+  MagicNumber:
+    active: false
 
 complexity:
   TooManyFunctions:

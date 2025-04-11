@@ -2,6 +2,7 @@ package ir.vahid.core.designsystem
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
@@ -12,11 +13,19 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
+import kotlinx.coroutines.delay
 
 /**
  * This is implemented as a [SearchBar] for now to
@@ -26,47 +35,58 @@ import ir.vahid.core.designsystem.theme.AllTrailsTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ATSearchInput(modifier: Modifier = Modifier) {
-    SearchBar(
-        modifier = modifier,
-        query = "Find trails",
-        onQueryChange = {},
-        onSearch = {},
-        active = false,
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = null,
-            )
-        },
-        trailingIcon = {
-            Icon(
-                imageVector = Icons.Default.Tune,
-                contentDescription = null,
-                modifier = Modifier
-                    .background(
-                        color = MaterialTheme.colorScheme.background,
-                        shape = CircleShape,
-                    ).padding(6.dp),
-            )
-        },
-        onActiveChange = {},
-    ) {
+    val typeOptions = listOf("trails", "parks", "cities")
+    var typeIndex by remember {
+        mutableIntStateOf(0)
     }
-//    TextField(
-//        modifier = modifier,
-//        value = "Find trails",
-//        onValueChange = {},
-//        shape = RoundedCornerShape(50),
-//        leadingIcon = {
-//            Icon(
-//                imageVector = Icons.Default.Search,
-//                contentDescription = null
-//            )
-//        },
-//        trailingIcon = {
-//
-//        }
-//    )
+    LaunchedEffect(Unit) {
+        while (true) {
+            typeIndex = (typeIndex + 1) % typeOptions.size
+            delay(2000)
+        }
+    }
+    SearchBar(
+        inputField = {
+            SearchBarDefaults.InputField(
+                query = "",
+                onQueryChange = {},
+                onSearch = {},
+                expanded = false,
+                onExpandedChange = {},
+                enabled = true,
+                placeholder = {
+                    Row {
+                        Text(
+                            text = "Find ",
+                        )
+                        ScrollingText(
+                            text = typeOptions[typeIndex],
+                        )
+                    }
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                    )
+                },
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Tune,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .background(
+                                color = MaterialTheme.colorScheme.background,
+                                shape = CircleShape,
+                            ).padding(6.dp),
+                    )
+                },
+            )
+        },
+        expanded = false,
+        onExpandedChange = {},
+        modifier = modifier,
+    ) { }
 }
 
 @Preview(

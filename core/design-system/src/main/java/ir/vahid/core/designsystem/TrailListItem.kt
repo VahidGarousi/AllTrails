@@ -33,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -43,6 +44,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
+import kotlin.math.abs
+import kotlin.math.max
 
 @Composable
 fun TrailListItem(modifier: Modifier = Modifier) {
@@ -196,8 +199,11 @@ private fun TrailImages(
         modifier = modifier,
         state = pagerState,
     ) { pageIndex ->
+        val alpha = max(0.25f, 1 - abs(pagerState.currentPageOffsetFraction))
         Image(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxWidth()
+                .alpha(alpha),
             painter = painterResource(imagesResList[pageIndex]),
             contentDescription = null,
             contentScale = ContentScale.Crop,

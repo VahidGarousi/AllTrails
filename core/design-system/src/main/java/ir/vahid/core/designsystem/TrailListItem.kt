@@ -61,15 +61,20 @@ fun TrailListItem(modifier: Modifier = Modifier) {
             TrailInformation(
                 modifier = Modifier.weight(1f),
             )
-            IconButton(
-                onClick = {},
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Download,
-                    contentDescription = null,
-                )
-            }
+            DownloadButton()
         }
+    }
+}
+
+@Composable
+private fun DownloadButton() {
+    IconButton(
+        onClick = {},
+    ) {
+        Icon(
+            imageVector = Icons.Default.Download,
+            contentDescription = null,
+        )
     }
 }
 
@@ -152,7 +157,9 @@ private fun ImageContainer() {
             .clip(RoundedCornerShape(32.dp))
             .aspectRatio(1.5f),
     ) {
-        val pagerState: PagerState = rememberPagerState { images.size }
+        val pagerState: PagerState = rememberPagerState {
+            images.size
+        }
         TrailImages(
             imagesResList = images,
             pagerState = pagerState,

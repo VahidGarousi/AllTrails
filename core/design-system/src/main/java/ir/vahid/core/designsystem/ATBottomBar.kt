@@ -3,6 +3,7 @@ package ir.vahid.core.designsystem
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Navigation
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Person
@@ -11,10 +12,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import ir.vahid.core.designsystem.theme.AllTrailsTheme
 
@@ -26,6 +30,7 @@ fun ATBottomBar(modifier: Modifier = Modifier) {
         ExploreTab()
         CommunityTab()
         NavigateTab()
+        SavedTab()
         ProfileTab()
     }
 }
@@ -58,6 +63,15 @@ private fun RowScope.NavigateTab() {
 }
 
 @Composable
+private fun RowScope.SavedTab() {
+    NavItem(
+        selected = false,
+        icon = Icons.Filled.Bookmark,
+        label = "Saved",
+    )
+}
+
+@Composable
 private fun RowScope.ProfileTab() {
     NavigationBarItem(
         selected = false,
@@ -84,6 +98,17 @@ private fun RowScope.NavItem(
     label: String,
     selected: Boolean,
 ) {
+    val selectedColor = MaterialTheme.colorScheme.onSurface
+    val unselectedColor = MaterialTheme.colorScheme.onSurface.copy(
+        alpha = 0.50f,
+    )
+    val colorsWithoutIndicator = NavigationBarItemDefaults.colors(
+        indicatorColor = Color.Transparent,
+        selectedIconColor = selectedColor,
+        selectedTextColor = selectedColor,
+        unselectedIconColor = unselectedColor,
+        unselectedTextColor = unselectedColor,
+    )
     NavigationBarItem(
         selected = selected,
         onClick = {},
@@ -98,8 +123,10 @@ private fun RowScope.NavItem(
                 text = label,
                 style = MaterialTheme.typography.labelSmall,
                 maxLines = 1,
+                fontWeight = FontWeight.Bold.takeIf { selected },
             )
         },
+        colors = colorsWithoutIndicator,
     )
 }
 
